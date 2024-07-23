@@ -1,0 +1,14 @@
+name: practice
+on: Workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+  deploy:
+    needs: test # needs means deploy job run sequentially with the test job. not parallely
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
