@@ -1,0 +1,41 @@
+#01
+name: Push workflow
+on: push
+jobs:
+  deploy :
+    runs-on: ubuntu-laatest
+    steps:
+      - name: Lint code
+        uses: actions/checkout@v3 #first use a github action
+      - name: Install dependencies
+        run: npm ci # execute command in the shell
+      - name: Lint
+        run: npm run lint
+      - name: Test code
+        run: npm run test
+      - name: Build code
+        run: npm run build
+      - name: Deploy code
+        run: echo "Deploying..."
+  # in here 3 - 6 lines are essential for a job. and if we use multiple jobs, each job should have 7 - 10 lines 
+
+  #02
+  name: Handle issues
+  on: issues
+  jobs:
+    info: # this can be output either
+      runs-on: ubuntu-latest
+      steps:
+        - name: Output event details
+          run: echo"${{ toJSON(github.event) }}"
+      
+      
+
+
+
+
+
+
+
+
+  
