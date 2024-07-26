@@ -4,6 +4,14 @@ on:
     types:
       - opened  # trigger when a pull request opened
   workflow_dispatch:    # we can use multiple situations to trigger
+  push: # trigger when push 
+    branches:
+      - main
+      - 'dev-*' #trigger when branch name start with dev-
+      - 'feat/**' #double * means more / in the branch name
+      # this branches filter can also add under the pull request
+    paths-ignore:
+      - '.github/workflows/*' # this path will ignore
 jobs:
   deploy:
     runs-on: ubuntu-latest
