@@ -1,0 +1,13 @@
+name: Events Demo 1
+on:
+  pull_request:
+    types:
+      - opened  # trigger when a pull request opened
+  workflow_dispatch:    # we can use multiple situations to trigger
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output event data
+        run: echo "${{ toJSON(github.event) }}"
+    
